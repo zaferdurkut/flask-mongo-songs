@@ -1,0 +1,17 @@
+__pycache__
+.DS_Store
+venv
+*.idea
+authenticaton.pyc
+testalch.pyc
+testviews.pyc
+.data
+.env
+
+node-modules
+
+.data
+
+files
+
+.pytest_cache

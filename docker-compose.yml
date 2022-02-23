@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  app:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT}:${PORT}"
+    links:
+      - mongodb
+    volumes:
+      - .:/app
+    command: tail -f /dev/null
+#    command: bash -c "pytest && python manage.py runserver"
+    env_file:
+      - .env
+
+    healthcheck:
+      test: curl --fail -s http://localhost:${PORT}/api/common/status || exit 1
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "${MONGO_PORT}:${MONGO_PORT}"
+    volumes:
+      - ./.data/mongodb_data:/data/db
+    env_file:
+      - .env
+    healthcheck:
+      test: echo "db.runCommand("ping").ok" | mongo mongodb:${MONGO_PORT}/${MONGO_SONGS_COLLECTION_NAME} --quiet
+      interval: 20s
+      timeout: 20s
+      retries: 5
+
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - "${MONGO_EXPRESS_PORT}:${MONGO_EXPRESS_PORT}"
+    links:
+      - mongodb
+    env_file:
+      - .env
