@@ -29,10 +29,11 @@ services:
       - "${MONGO_PORT}:${MONGO_PORT}"
     volumes:
       - ./.data/mongodb_data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
     env_file:
       - .env
     healthcheck:
-      test: echo "db.runCommand("ping").ok" | mongo mongodb:${MONGO_PORT}/${MONGO_SONGS_COLLECTION_NAME} --quiet
+      test: echo "db.runCommand("ping").ok" | mongo mongodb:${MONGO_PORT}/${MONGO_SONGS_DB_NAME} --quiet
       interval: 20s
       timeout: 20s
       retries: 5

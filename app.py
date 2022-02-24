@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask
 from flask_cors import CORS
-from api.common import blueprint_common
+from api.common_controller import blueprint_common
 from config.config import config
 
 load_dotenv()

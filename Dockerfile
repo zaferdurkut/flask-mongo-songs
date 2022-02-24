@@ -10,6 +10,7 @@ RUN set -ex; \
     apt-get upgrade -y; \
     apt-get install -y build-essential; \
     apt-get install -y python-dev;\
+    python -m pip install --upgrade pip; \
     pip install -U -v setuptools; \
     pip install --no-cache-dir -r requirements.txt; \
     pip install ipdb; \
