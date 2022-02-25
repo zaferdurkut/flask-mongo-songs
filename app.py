@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from flask import Flask
 from flask_cors import CORS
 from api.common_controller import blueprint_common
+from api.songs_controller import blueprint_songs
 from config.config import config
 
 load_dotenv()
@@ -31,3 +32,4 @@ def register_extensions(app):
 def register_blueprints(app):
     """Register blueprints."""
     app.register_blueprint(blueprint_common)
+    app.register_blueprint(blueprint_songs)

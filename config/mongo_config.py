@@ -9,3 +9,5 @@ mongo_client = pymongo.MongoClient(
 )
 
 mongo_songs_db = mongo_client[os.getenv("MONGO_SONGS_DB_NAME")]
+
+mongo_songs_collection = mongo_songs_db[os.getenv("MONGO_SONGS_COLLECTION_NAME")]
