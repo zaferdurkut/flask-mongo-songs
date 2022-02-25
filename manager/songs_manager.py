@@ -57,6 +57,8 @@ class SongsManager:
 
     def get_song_score_with_id(self, song_id: str) -> SongScoreOutputModel:
         song = self.collection.find_one({"_id": ObjectId(song_id)})
+        if song is None:
+            return SongScoreOutputModel()
         ratings = song.get("ratings", None)
         if ratings is None:
             return SongScoreOutputModel()

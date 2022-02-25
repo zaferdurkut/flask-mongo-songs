@@ -1,5 +1,3 @@
-from random import randrange
-
 import bson
 from flask import jsonify, Blueprint, Response, abort, make_response
 from flask_pydantic import validate
@@ -10,7 +8,7 @@ from api.dto.song_input_model import SongInputModel
 from api.dto.song_output_model import ListSongOutputModel
 from api.dto.song_rating_input_model import SongRatingInputModel
 from api.dto.song_score_output_model import SongScoreOutputModel
-from initial_songs import INITIAL_SONGS
+from data.initial_songs import INITIAL_SONGS
 from manager.songs_manager import SongsManager
 
 blueprint_songs = Blueprint("/api/songs", __name__, url_prefix="/api/songs")

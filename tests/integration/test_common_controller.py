@@ -1,9 +1,9 @@
-import json
-from unittest import TestCase
-
 import pytest
+from requests import Response
 
 from app import create_app
+from config.mongo_config import mongo_songs_collection
+from tests.constants import INITIAL_SONGS_PATH, COMMON_PATH
 
 
 @pytest.fixture()
@@ -14,7 +14,12 @@ def app():
             "TESTING": True,
         }
     )
-    return app
+
+    mongo_songs_collection.drop()
+
+    yield app
+
+    mongo_songs_collection.drop()
 
 
 @pytest.fixture()
@@ -27,19 +32,14 @@ def runner(app):
     return app.test_cli_runner()
 
 
-COMMON_PATH = "/api/common/"
+class TestCommonController:
+    @staticmethod
+    def test_should_get_healthy(client):
+        # given
 
-
-class CommonController(TestCase):
-    def setUp(self):
-        self.app = create_app()
-        self.app.testing = True
-        self.client = client(self.app)
-
-    def test_common(self):
-        response = self.client.get(COMMON_PATH)
-
-        assert response.status_code == 200
-
-        response_data = json.loads(response.data)
-        assert response_data == {"status": True}
+        # when
+        response: Response = client.get(
+            INITIAL_SONGS_PATH,
+        )
+        # then
+        assert response.status_code == 204

@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "1418a6d2-16e0-442f-8dfe-f1ccae33ebb9",
+		"name": "Songs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Songs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/songs?page=1&page_size=20&level=13&message=Opa",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"songs"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page_size",
+							"value": "20"
+						},
+						{
+							"key": "level",
+							"value": "13"
+						},
+						{
+							"key": "message",
+							"value": "Opa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Song Scores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/songs/6218eb4930c300f0494a5907/score",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"songs",
+						"6218eb4930c300f0494a5907",
+						"score"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Rating",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"rating\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/songs/6218eb4930c300f0494a5907/rating",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"songs",
+						"6218eb4930c300f0494a5907",
+						"rating"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Initial Songs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/songs/initial",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"songs",
+						"initial"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Song",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"artist\": \"The zafer\",\n    \"title\": \"A New zafer\",\n    \"difficulty\": 10.1,\n    \"level\": 9,\n    \"released\": \"2010-02-03\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/songs",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"songs"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

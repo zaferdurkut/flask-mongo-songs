@@ -12,8 +12,8 @@ services:
       - mongodb
     volumes:
       - .:/app
-    command: tail -f /dev/null
-#    command: bash -c "pytest && python manage.py runserver"
+#    command: tail -f /dev/null
+    command: bash -c "python -m pytest tests/ && python manage.py runserver"
     env_file:
       - .env
 
