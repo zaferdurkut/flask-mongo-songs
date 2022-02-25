@@ -1,3 +1,7 @@
+import re
+from statistics import mean
+
+from bson import ObjectId
 from flask import url_for
 
 from api.dto.list_songs_query_input_model import ListSongsQueryModel
@@ -8,6 +12,7 @@ from api.dto.song_output_model import (
     LinkSongOutputModel,
     HrefItemModel,
 )
+from api.dto.song_score_output_model import SongScoreOutputModel
 from config.mongo_config import mongo_songs_collection
 
 
@@ -19,14 +24,14 @@ class SongsManager:
         page = query.page
         page_size = query.page_size
         search_string = query.message
-
+        regex_pattern = re.compile(f"^{search_string}")
         conditions = {
             "$and": [
                 {"level": query.level} if query.level is not None else {},
                 {
                     "$or": [
-                        {"title": {"$regex": f"({search_string})"}},
-                        {"artist": {"$regex": f"({search_string})"}},
+                        {"artist": regex_pattern},
+                        {"title": regex_pattern},
                     ]
                 }
                 if search_string is not None
@@ -48,6 +53,23 @@ class SongsManager:
             links=self.__calculate_song_links(
                 page=page, page_size=page_size, songs_count=songs_count
             ),
+        )
+
+    def get_song_score_with_id(self, song_id: str) -> SongScoreOutputModel:
+        song = self.collection.find_one({"_id": ObjectId(song_id)})
+        ratings = song.get("ratings", None)
+        if ratings is None:
+            return SongScoreOutputModel()
+        else:
+            return SongScoreOutputModel(
+                min=min(ratings), average=mean(ratings), max=max(ratings)
+            )
+
+    def add_rating(self, song_id: str, rating: int):
+        self.collection.update_one(
+            filter={"_id": ObjectId(song_id)},
+            update={"$push": {"ratings": rating}},
+            upsert=True,
         )
 
     def create_song(self, song: SongInputModel) -> str:

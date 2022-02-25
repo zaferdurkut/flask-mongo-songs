@@ -15,6 +15,7 @@ class SongOutputModel(BaseModel):
     difficulty: float
     level: int
     released: date
+    rating: Optional[int]
 
 
 class LinkSongOutputModel(BaseModel):
