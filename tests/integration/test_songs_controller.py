@@ -89,7 +89,7 @@ class TestSongsController:
             song.pop("id", None)
         assert response_data == LIST_SONG_EXPECTED_FULL_DATA_WITHOUT_IDS
 
-        ## paging control
+        ## paging and links control
         # given
         params = ListSongsQueryModel(page=2, page_size=4, level=None, message=None)
 
@@ -202,7 +202,7 @@ class TestSongsController:
         )
 
     @staticmethod
-    def test_should_add_score_and_get_score(client):
+    def test_should_add_rating_and_get_score(client):
         ## Add song
         # given
         input_model = SongInputModel(
@@ -223,8 +223,8 @@ class TestSongsController:
 
         ## Add rating
         # given
-        rates = [1, 1, 2, 2, 3, 3, 5, 5, 4]
-        for item in rates:
+        ratings = [1, 1, 2, 2, 3, 3, 5, 5, 4]
+        for item in ratings:
             input_model = SongRatingInputModel(rating=item)
             # when
             add_rating_response: Response = client.put(
@@ -250,6 +250,6 @@ class TestSongsController:
         assert (
             response_data
             == SongScoreOutputModel(
-                min=min(rates), max=max(rates), average=mean(rates)
+                min=min(ratings), max=max(ratings), average=mean(ratings)
             ).dict()
         )

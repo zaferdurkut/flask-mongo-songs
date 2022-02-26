@@ -8,7 +8,7 @@ LIST_SONG_EXPECTED_FULL_DATA_WITHOUT_IDS = {
     },
     "songs": [
         {
-            "artist": "The Yousicians",
+            "artist": "The You",
             "difficulty": 14.6,
             "level": 13,
             "rating": None,
@@ -16,7 +16,7 @@ LIST_SONG_EXPECTED_FULL_DATA_WITHOUT_IDS = {
             "title": "Lycanthropic Metamorphosis",
         },
         {
-            "artist": "The Yousicians",
+            "artist": "The You",
             "difficulty": 9.1,
             "level": 9,
             "rating": None,
@@ -32,7 +32,7 @@ LIST_SONG_EXPECTED_FULL_DATA_WITHOUT_IDS = {
             "title": "Awaki-Waki",
         },
         {
-            "artist": "The Yousicians",
+            "artist": "The You",
             "difficulty": 13.22,
             "level": 13,
             "rating": None,
@@ -40,7 +40,7 @@ LIST_SONG_EXPECTED_FULL_DATA_WITHOUT_IDS = {
             "title": "You've Got The Power",
         },
         {
-            "artist": "The Yousicians",
+            "artist": "The You",
             "difficulty": 10.98,
             "level": 9,
             "rating": None,
@@ -48,7 +48,7 @@ LIST_SONG_EXPECTED_FULL_DATA_WITHOUT_IDS = {
             "title": "Wishing In The Night",
         },
         {
-            "artist": "The Yousicians",
+            "artist": "The You",
             "difficulty": 14.66,
             "level": 13,
             "rating": None,
@@ -56,7 +56,7 @@ LIST_SONG_EXPECTED_FULL_DATA_WITHOUT_IDS = {
             "title": "Opa Opa Ta Bouzoukia",
         },
         {
-            "artist": "The Yousicians",
+            "artist": "The You",
             "difficulty": 2.0,
             "level": 3,
             "rating": None,
@@ -64,7 +64,7 @@ LIST_SONG_EXPECTED_FULL_DATA_WITHOUT_IDS = {
             "title": "Greasy Fingers - boss level",
         },
         {
-            "artist": "The Yousicians",
+            "artist": "The You",
             "difficulty": 5.0,
             "level": 6,
             "rating": None,
@@ -72,7 +72,7 @@ LIST_SONG_EXPECTED_FULL_DATA_WITHOUT_IDS = {
             "title": "Alabama Sunrise",
         },
         {
-            "artist": "The Yousicians",
+            "artist": "The You",
             "difficulty": 9.0,
             "level": 9,
             "rating": None,
@@ -80,7 +80,7 @@ LIST_SONG_EXPECTED_FULL_DATA_WITHOUT_IDS = {
             "title": "Can't Buy Me Skills",
         },
         {
-            "artist": "The Yousicians",
+            "artist": "The You",
             "difficulty": 13.0,
             "level": 13,
             "rating": None,
@@ -88,7 +88,7 @@ LIST_SONG_EXPECTED_FULL_DATA_WITHOUT_IDS = {
             "title": "Vivaldi Allegro Mashup",
         },
         {
-            "artist": "The Yousicians",
+            "artist": "The You",
             "difficulty": 7.0,
             "level": 6,
             "rating": None,
